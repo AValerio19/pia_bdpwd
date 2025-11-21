@@ -6,12 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mariskas</title>
+    <link rel="icon" href="src/favicon.png" type="image/png">
     <link rel="stylesheet" href="style/index8.css">
 </head>
 <body>
     <header>
         <div class="header-top">
-            <h1>Mariskas</h1>
+            <a class="header-logo" href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=inicio">
+                <img src="src/logo.png" alt="logo">
+                <h1>Mariskas</h1>
+            </a>
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
             <label for="menu-toggle" class="hamburger">
                 <span></span>
