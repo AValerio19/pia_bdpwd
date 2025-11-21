@@ -1,13 +1,5 @@
 <?php
-
-$con = mysqli_connect(
-    getenv("DB_HOST"),
-    getenv("DB_USERNAME"),
-    getenv("DB_PASSWORD"),
-    getenv("DB_NAME"),
-    getenv("DB_PORT")
-);
-
+$con = mysqli_connect("localhost", "root", "", "mariscos_5l3");
 if (!$con) {
-    die("Error al conectar: " . mysqli_connect_error());
+    die("No se establecio la conexion con el servidor". mysqli_error($con));
 }

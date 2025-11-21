@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style/inicio5.css">
+<link rel="stylesheet" href="style/inicio7.css">
 
 
 <header class="content">
@@ -44,17 +44,18 @@
                 <li>Atención más cálida que una playa en verano.</li>
             </ul>
         </div>
-        <div class="img-box"></div>
+        <div class="img-box">
+        </div>
     </div>
 
     <div class="caja">
         <h2>Galería de Platillos</h2>
         <p>Un vistazo a lo que hace que todos regresen por más:</p>
         <div class="galeria">
-            <div class="foto"><img src="img/platillo1.jpg" alt="Ceviche Fresco"></div>
-            <div class="foto"><img src="img/platillo2.jpg" alt="Tostada de Mariscos"></div>
-            <div class="foto"><img src="img/platillo3.jpg" alt="Camarones a la Plancha"></div>
-            <div class="foto"><img src="img/platillo4.jpg" alt="Cóctel de Camarón"></div>
+            <div class="foto"><img src="src/ceviche.jpeg" alt="Ceviche Fresco"></div>
+            <div class="foto"><img src="src/tostada.jpg" alt="Tostada de Mariscos"></div>
+            <div class="foto"><img src="src/camarones.jpg" alt="Camarones a la Plancha"></div>
+            <div class="foto"><img src="src/coctel.jpg" alt="Cóctel de Camarón"></div>
         </div>
     </div>
 

@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="style/modulos2.css">
+<link rel="stylesheet" href="style/modulos3.css">
 <section>
     <div id="sidebar">
         <nav>
@@ -21,28 +21,6 @@
                             <input type="text" name="nombre" id="nombre">
                         </div>
                         <div class="pregunta">
-                            <label for="desc">Descripción</label>
-                            <input type="text" name="desc" id="desc">
-                        </div>
-                        <div class="pregunta">
-                            <label for="unidad">Unidad de Medida</label>
-                            <input type="text" name="unidad" id="unidad">
-                        </div>
-                    </div>
-                    <div class="preguntas">
-                        <div class="pregunta">
-                            <label for="cantidad">Cantidad</label>
-                            <input type="text" name="cantidad" id="cantidad">
-                        </div>
-                        <div class="pregunta">
-                            <label for="precio">Precio de Venta</label>
-                            <input type="text" name="precio" id="precio">
-                        </div>
-                        <div class="pregunta">
-                            <label for="costo">Costo de Compra</label>
-                            <input type="text" name="costo" id="costo">
-                        </div>
-                        <div class="pregunta">
                             <label for="costo">Proveedor</label>
                             <select name="proveedor" id="proveedor">
                                 <?php 
@@ -59,14 +37,36 @@
                                 <?php endwhile;?>
                             </select>
                         </div>
+                        <div class="pregunta">
+                            <label for="desc">Descripción</label>
+                            <input type="text" name="desc" id="desc">
+                        </div>
+                    </div>
+                    <div class="preguntas">
+                        <div class="pregunta">
+                            <label for="cantidad">Cantidad</label>
+                            <input type="text" name="cantidad" id="cantidad">
+                        </div>
+                        <div class="pregunta">
+                            <label for="unidad">Unidad de Medida</label>
+                            <input type="text" name="unidad" id="unidad">
+                        </div>
+                        <div class="pregunta">
+                            <label for="precio">Precio de Venta</label>
+                            <input type="text" name="precio" id="precio">
+                        </div>
+                        <div class="pregunta">
+                            <label for="costo">Costo de Compra</label>
+                            <input type="text" name="costo" id="costo">
+                        </div>
                     </div>
 
                     <input type="hidden" name="proceso" id="proceso" value="insert">
                     <input type="hidden" name="provenecia" id="provenencia" value="almacen">
                     <input type="hidden" name="ruta" id="ruta" value="vista=almacen&proceso=datos">
 
-                    <button type="submit">Registrar</button>
-                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=almacen">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=almacen" class="btn btn-secondary">Cancelar</a>
                 </form>
             <?php elseif ($proceso == 'buscar'): ?>
                 <h1>Seleccione un cliente</h1>
@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <button type="submit">Buscar</button>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
                 </form>
             <?php elseif ($proceso == 'actualizar'):?>
                 <?php
@@ -104,28 +104,6 @@
                             <div class="pregunta">
                                 <label for="nombre">Producto</label>
                                 <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($row['Nombre']); ?>">
-                            </div>
-                            <div class="pregunta">
-                                <label for="desc">Descripción</label>
-                                <input type="text" name="desc" id="desc" value="<?php echo htmlspecialchars($row['Descripcion']); ?>">
-                            </div>
-                            <div class="pregunta">
-                                <label for="unidad">Unidad de Medida</label>
-                                <input type="text" name="unidad" id="unidad" value="<?php echo htmlspecialchars($row['UnidadMedida']); ?>">
-                            </div>
-                        </div>
-                        <div class="preguntas">
-                            <div class="pregunta">
-                                <label for="cantidad">Cantidad</label>
-                                <input type="number" name="cantidad" id="cantidad" value="<?php echo htmlspecialchars($row['CantidadStock']); ?>">
-                            </div>
-                            <div class="pregunta">
-                                <label for="precio">Precio de Venta</label>
-                                <input type="number" name="precio" id="precio" value="<?php echo htmlspecialchars($row['PrecioVenta']); ?>">
-                            </div>
-                            <div class="pregunta">
-                                <label for="costo">Costo de Compra</label>
-                                <input type="number" name="costo" id="costo" value="<?php echo htmlspecialchars($row['CostoCompra']); ?>">
                             </div>
                             <div class="pregunta">
                                 <label for="proveedor">Proveedor</label>
@@ -144,6 +122,30 @@
                                     <?php endwhile; ?>
                                 </select>
                             </div>
+                            <div class="pregunta">
+                                <label for="desc">Descripción</label>
+                                <input type="text" name="desc" id="desc" value="<?php echo htmlspecialchars($row['Descripcion']); ?>">
+                            </div>
+                            
+                        </div>
+                        <div class="preguntas">
+                            <div class="pregunta">
+                                <label for="cantidad">Cantidad</label>
+                                <input type="number" name="cantidad" id="cantidad" value="<?php echo htmlspecialchars($row['CantidadStock']); ?>">
+                            </div>
+                            <div class="pregunta">
+                                <label for="unidad">Unidad de Medida</label>
+                                <input type="text" name="unidad" id="unidad" value="<?php echo htmlspecialchars($row['UnidadMedida']); ?>">
+                            </div>
+                            <div class="pregunta">
+                                <label for="precio">Precio de Venta</label>
+                                <input type="number" name="precio" id="precio" value="<?php echo htmlspecialchars($row['PrecioVenta']); ?>">
+                            </div>
+                            <div class="pregunta">
+                                <label for="costo">Costo de Compra</label>
+                                <input type="number" name="costo" id="costo" value="<?php echo htmlspecialchars($row['CostoCompra']); ?>">
+                            </div>
+                            
                         </div>
                         
                         <input type="hidden" name="proceso" id="proceso" value="update">
@@ -153,8 +155,8 @@
                         <input type="hidden" name="id" id="id" value="<?php echo intval($row['ProductoID']); ?>">
                         <input type="hidden" name="campo" id="campo" value="ProductoID">
 
-                        <button type="submit">Registrar</button>
-                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=almacen">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=almacen" class="btn btn-secondary">Cancelar</a>
                     </form>
                 <?php endif; ?>
             <?php endif; ?>

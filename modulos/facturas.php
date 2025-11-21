@@ -1,5 +1,6 @@
 
-<link rel="stylesheet" href="style/modulos2.css">
+<link rel="stylesheet" href="style/modulos3.css">
+<link rel="stylesheet" href="style/modal2.css">
 <section>
     <div id="sidebar">
         <nav>
@@ -57,8 +58,8 @@
                     <input type="hidden" name="provenecia" id="provenencia" value="facturas">
                     <input type="hidden" name="ruta" id="ruta" value="vista=facturas&proceso=datos">
 
-                    <button type="submit">Registrar</button>
-                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=facturas">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=facturas" class="btn btn-secondary">Cancelar</a>
                 </form>
             <?php elseif ($proceso == 'buscar'): ?>
                 <h1>Seleccione una factura</h1>
@@ -86,7 +87,7 @@
                         </div>
                     </div>
 
-                    <button type="submit">Buscar</button>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
                 </form>
             <?php elseif ($proceso == 'actualizar'):?>
                 <?php
@@ -143,8 +144,8 @@
                         <input type="hidden" name="campo" id="campo" value="FacturaID">
                         <input type="hidden" name="id" id="id" value="<?php echo intval($row['FacturaID']); ?>">
 
-                        <button type="submit">Registrar</button>
-                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=facturas">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=facturas" class="btn btn-secondary">Cancelar</a>
                     </form>
                 <?php endif; ?>
             <?php endif; ?>
@@ -166,7 +167,27 @@
                                 #<?php echo htmlspecialchars($row['FacturaID']); ?> 
                                 (Factura de: <?php echo htmlspecialchars($row['NombreCliente']); ?>)
                             </span>
-                            <a href="operaciones.php?proceso=eliminar&provenencia=facturas&id=<?php echo intval($row['FacturaID'])?>">Detalles</a>
+                            <?php 
+                            $sqlDetalles = "SELECT
+                                                df.FacturaID,
+                                                df.ProductoID,
+                                                a.Nombre AS producto,
+                                                df.Cantidad,
+                                                df.PrecioUnitario,
+                                                df.Subtotal
+                                            FROM detallefactura df
+                                            JOIN almacen a ON df.ProductoID = a.ProductoID;";
+                            $consultaDetalles = mysqli_query($con, $sqlDetalles);
+
+                            $detallesAgrupados = [];
+
+                            while ($d = mysqli_fetch_assoc($consultaDetalles)) {
+                                $detallesAgrupados[$d['FacturaID']][] = $d;
+                            }
+                            ?>
+                            <button type="button" onclick='abrirModal(<?php echo json_encode($detallesAgrupados[$row["FacturaID"]] ?? []); ?>)'>
+                                Detalles
+                            </button>
                             <form action="operaciones.php" method="post">
                                 <input type="hidden" name="campo" id="campo" value="FacturaID">
                                 <input type="hidden" name="proceso" id="proceso" value="delete">
@@ -188,3 +209,56 @@
         </div>
     </div>
 </section>
+<div id="modal" class="modal">
+    <div id="fondo">
+        <div class="modal-content">
+            <span id="cerrarModal" class="cerrar">&times;</span>
+
+            <h2>Detalles de la Factura</h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+</div>
+<script>
+function abrirModal(detalles) {
+    let html = `
+        <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse: collapse;">
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+    `;
+
+    if (detalles.length === 0) {
+        html += `<tr><td colspan="6">No hay detalles para esta factura</td></tr>`;
+    } else {
+        detalles.forEach(d => {
+            html += `
+                <tr>
+                    <td>${d.producto}</td>
+                    <td>${d.Cantidad}</td>
+                    <td>${d.PrecioUnitario}</td>
+                    <td>${d.Subtotal}</td>
+                </tr>
+            `;
+        });
+    }
+
+    html += `</table>`;
+
+    document.getElementById("modalBody").innerHTML = html;
+    document.getElementById("modal").style.display = "flex";
+}
+
+document.getElementById("cerrarModal").onclick = function() {
+    document.getElementById("modal").style.display = "none";
+};
+
+window.onclick = function(e) {
+    if (e.target == document.getElementById("modal")) {
+        document.getElementById("modal").style.display = "none";
+    }
+};
+</script>

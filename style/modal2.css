@@ -1,0 +1,134 @@
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#fondo {
+    border-radius: 20px;
+    /* Fondo animado de olas */
+    background: linear-gradient(180deg, #0099cc, #66d9ff, #ffffff);
+    background-size: 400% 400%;
+    animation: oleaje 12s ease infinite;
+}
+
+@keyframes oleaje {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* ===== CONTENIDO DEL MODAL ===== */
+.modal-content {
+    background: rgba(255, 255, 255, 0.32);
+    backdrop-filter: blur(12px);
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+    /* Efecto suave al aparecer */
+    transform: scale(0.8);
+    animation: aparecer 0.3s ease forwards;
+}
+
+@keyframes aparecer {
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Botón cerrar */
+.cerrar {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #004d66;
+    transition: 0.2s;
+}
+
+.cerrar:hover {
+    color: #003344;
+    transform: scale(1.2);
+}
+
+/* ===== TABLA ESTILO MAR ===== */
+.modal table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Segoe UI", sans-serif;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal th {
+    background: rgba(0, 153, 204, 0.8);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.modal td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+}
+
+.modal tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.modal tr:hover {
+    background: rgba(0, 153, 204, 0.2);
+    transition: 0.2s;
+}
+
+/* ======= ADAPTACIÓN A TELÉFONOS ======= */
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 15px 20px;
+        border-radius: 12px;
+        transform: scale(1); /* para que no aparezca demasiado pequeño */
+    }
+
+    #fondo {
+        width: 100%;
+    }
+
+    .modal table {
+        font-size: 14px;
+        border-radius: 8px;
+        overflow-x: auto;
+        display: block; /* Permite scroll lateral */
+        white-space: nowrap;
+    }
+
+    .modal th,
+    .modal td {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .cerrar {
+        font-size: 24px;
+    }
+}

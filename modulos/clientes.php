@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="style/modulos2.css">
+<link rel="stylesheet" href="style/modulos3.css">
 <section>
     <div id="sidebar">
         <nav>
@@ -28,12 +28,12 @@
                             <label for="rfc">RFC</label>
                             <input type="text" name="rfc" id="rfc">
                         </div>
-                    </div>
-                    <div class="preguntas">
                         <div class="pregunta">
                             <label for="correo">Correo</label>
                             <input type="text" name="correo" id="correo">
                         </div>
+                    </div>
+                    <div class="preguntas">
                         <div class="pregunta">
                             <label for="dir">Direccion</label>
                             <input type="text" name="dir" id="dir">
@@ -44,8 +44,8 @@
                     <input type="hidden" name="provenecia" id="provenencia" value="clientes">
                     <input type="hidden" name="ruta" id="ruta" value="vista=clientes&proceso=datos">
 
-                    <button type="submit">Registrar</button>
-                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=clientes">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=clientes" class="btn btn-secondary">Cancelar</a>
                 </form>
             <?php elseif ($proceso == 'buscar'): ?>
                 <h1>Seleccione un cliente</h1>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
 
-                    <button type="submit">Buscar</button>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
                 </form>
             <?php elseif ($proceso == 'actualizar'):?>
                 <?php
@@ -81,10 +81,6 @@
                     <form action="operaciones.php" method="post">
                         <div class="preguntas">
                             <div class="pregunta">
-                                <label for="nombre">ID de Cliente</label>
-                                <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($row['ClienteID']); ?>" readonly>
-                            </div>
-                            <div class="pregunta">
                                 <label for="nombre">Nombre Completo</label>
                                 <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($row['Nombre']); ?>">
                             </div>
@@ -96,12 +92,12 @@
                                 <label for="rfc">RFC</label>
                                 <input type="text" name="rfc" id="rfc" value="<?php echo htmlspecialchars($row['RFC']); ?>">
                             </div>
-                        </div>
-                        <div class="preguntas">
                             <div class="pregunta">
                                 <label for="correo">Correo</label>
                                 <input type="text" name="correo" id="correo" value="<?php echo htmlspecialchars($row['Email']); ?>">
                             </div>
+                        </div>
+                        <div class="preguntas">
                             <div class="pregunta">
                                 <label for="dir">Direccion</label>
                                 <input type="text" name="dir" id="dir" value="<?php echo htmlspecialchars($row['Direccion']); ?>">
@@ -115,8 +111,8 @@
                         <input type="hidden" name="id" id="id" value="<?php echo intval($row['ClienteID']); ?>">
                         <input type="hidden" name="campo" id="campo" value="ClienteID">
 
-                        <button type="submit">Registrar</button>
-                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=clientes">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=clientes" class="btn btn-secondary">Cancelar</a>
                     </form>
                 <?php endif; ?>
             <?php endif; ?>

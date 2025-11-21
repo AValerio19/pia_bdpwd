@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style/modulos2.css">
+<link rel="stylesheet" href="style/modulos3.css">
 <section>
     <div id="sidebar">
         <nav>
@@ -30,12 +30,12 @@
                             <input type="tel" name="telefono" id="telefono">
                         </div>
                         <div class="pregunta">
-                            <label for="dir">Dirección</label>
-                            <input type="text" name="dir" id="dir">
-                        </div>
-                        <div class="pregunta">
                             <label for="marisco">Tipo de Marisco</label>
                             <input type="text" name="marisco" id="marisco">
+                        </div>
+                        <div class="pregunta">
+                            <label for="dir">Dirección</label>
+                            <input type="text" name="dir" id="dir">
                         </div>
                     </div>
 
@@ -43,8 +43,8 @@
                     <input type="hidden" name="provenecia" id="provenencia" value="proveedores">
                     <input type="hidden" name="ruta" id="ruta" value="vista=proveedores&proceso=datos">
 
-                    <button type="submit">Registrar</button>
-                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=proveedores">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=proveedores" class="btn btn-secondary">Cancelar</a>
                 </form>
             <?php elseif ($proceso == 'buscar'): ?>
                 <h1>Seleccione un proveedor</h1>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                    <button type="submit">Buscar</button>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
                 </form>
             <?php elseif ($proceso == 'actualizar'):?>
                 <?php
@@ -97,13 +97,14 @@
                                 <input type="tel" name="telefono" id="telefono" value="<?php echo htmlspecialchars($row['Telefono']); ?>">
                             </div>
                             <div class="pregunta">
-                                <label for="dir">Dirección</label>
-                                <input type="text" name="dir" id="dir" value="<?php echo htmlspecialchars($row['Direccion']); ?>">
-                            </div>
-                            <div class="pregunta">
                                 <label for="marisco">Tipo de Marisco</label>
                                 <input type="text" name="marisco" id="marisco" value="<?php echo htmlspecialchars($row['TipoMarisco']); ?>">
                             </div>
+                            <div class="pregunta">
+                                <label for="dir">Dirección</label>
+                                <input type="text" name="dir" id="dir" value="<?php echo htmlspecialchars($row['Direccion']); ?>">
+                            </div>
+                            
                         </div>
                         
                         <input type="hidden" name="proceso" id="proceso" value="update">
@@ -113,8 +114,8 @@
                         <input type="hidden" name="campo" id="campo" value="ProveedorID">
                         <input type="hidden" name="id" id="id" value="<?php echo intval($row['ProveedorID']); ?>">
 
-                        <button type="submit">Registrar</button>
-                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=proveedores">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?vista=proveedores" class="btn btn-secondary">Cancelar</a>
                     </form>
                 <?php endif; ?>
             <?php endif; ?>
